@@ -19,7 +19,7 @@
 
     <b>Description</b> <br>
 
-    A RESTful application that takes a url as input (http post) and finds individual event urls in the same domain and returns 10 urls as output. <br><br>
+    A RESTful web application that takes a url as input (also http post) and finds individual event urls in the same domain and returns 10 urls as output. <br><br>
 
     <b>Logic Used</b> <br>
 
@@ -38,22 +38,30 @@
     and keeps repeating steps 3 and 4, till all urls in the url set's exhausted <br><br>
 
     <b>Technologies Used</b> <br>
-    Java, Servlets, Maven, Tomcat, Jersey - RESTful Web Services in Java <br><br>
+    Java, Servlets, Maven, Tomcat, Jersey - RESTful Web Services in Java, Cloudbees <br><br>
 
     <b>Links</b><br>
+    <b>Application URL :</b> <a href="http://spotoncrawler.prash88.cloudbees.net">http://spotoncrawler.prash88.cloudbees.net</a><br><br>
+
+    <b>GitHub :</b> <a href="https://github.com/Prash88/WebCrawler">https://github.com/Prash88/WebCrawler</a><br><br>
+
+    <b>REST API :</b><br>
+
+    POST <a href="http://spotoncrawler.prash88.cloudbees.net/rest/rest/event/url">spotoncrawler.prash88.cloudbees.net/rest/rest/event/url</a><br>
+    Content-Type: application/x-www-form-urlencoded <br><br>
+
+    Form parameters: url="urlstring" <br>
+    Example : url=<a href="http://www.eventbrite.com/e/sausalito-art-festival-2014-tickets-11831764125">http://www.eventbrite.com/e/sausalito-art-festival-2014-tickets-11831764125</a> <br><br>
+
+    Response: HTTP/1.1 200 OK <br>
+    Content-Type: HTML <br>
 
 </p>
 <script>
     function validateForm() {
         var x = document.forms["myForm"]["url"].value;
-        var urlregex = new RegExp("^(http|https|ftp)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&amp;%\$\-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\?\'\\\+&amp;%\$#\=~_\-]+))*$");
         if (x == null || x == "") {
             alert("URL must be filled out");
-            return false;
-        }
-        else if(!urlregex.test(x))
-        {
-            alert("Enter valid url");
             return false;
         }
         return true;
