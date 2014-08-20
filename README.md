@@ -39,7 +39,6 @@ Content-Type:application/x-www-form-urlencoded
 
 Form parameters:
 url="url string"
-
 Example:
 url=http://www.eventbrite.com/e/sausalito-art-festival-2014-tickets-11831764125
 
