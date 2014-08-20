@@ -28,3 +28,21 @@ Java, Servlets, Maven, Tomcat, Jersey - RESTful Web Services in Java
 
 Links
 =====
+
+Application URL : http://spotoncrawler.prash88.cloudbees.net
+
+GitHub : https://github.com/Prash88/WebCrawler
+
+REST API 
+POST POST spotoncrawler.prash88.cloudbees.net/rest/rest/event/url
+Content-Type:application/x-www-form-urlencoded
+
+Form parameters:
+url=<url string>
+
+Example
+url=http://www.eventbrite.com/e/sausalito-art-festival-2014-tickets-11831764125
+
+Response:
+HTTP/1.1 200 OK
+Content-Type: HTML
