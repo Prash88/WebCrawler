@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Web crawler (individual events) </title>
+</head>
+<body>
+<form name="myForm" action="/rest/event/url" onsubmit="return validateForm()" method="POST">
+    <h2>Web crawler form</h2>
+    <h4>Enter any event url </h4>
+    <input name="url"  size="60"/>
+    <br/><br/>
+    <input type="submit" value="Submit" />
+    <br/>
+</form>
+<p>
+    <b>WebCrawler</b> <br>
+
+    A Web Crawler that takes an url and finds individual event urls in the same domain. <br><br>
+
+    <b>Description</b> <br>
+
+    A RESTful application that takes a url as input (http post) and finds individual event urls in the same domain and returns 10 urls as output. <br><br>
+
+    <b>Logic Used</b> <br>
+
+    1) Application takes an input url. (Can be called through HTTP post as well). <br>
+
+    2) Read all links from that page and save them in a hash set <br>
+    (pattern match for events url and eliminate some of them without reading its content itself <br>
+    - pattern used ".*(/e/|/events/|/exhibition/|.*page_id=.*&id=.*).*" ) <br>
+
+    3) Then checks each link if it belongs to an individual event by patten matching its content to the pattern - <br>
+    "(?i).*(When & Where|Ticket Information|Who's Going|Event Details|upcoming event on Eventbrite|past events on Eventbrite)*.*" <br>
+
+    4) If the event links set is filled with 10 urls based on patten matching mentioned above ,it returns all urls as output and stops/breaks the process. <br>
+
+    5) Else it takes to root/domain url and checks all links in  root/domain url content saves them in the same hash set mentioned above <br>
+    and keeps repeating steps 3 and 4, till all urls in the url set's exhausted <br><br>
+
+    <b>Technologies Used</b> <br>
+    Java, Servlets, Maven, Tomcat, Jersey - RESTful Web Services in Java <br><br>
+
+    <b>Links</b><br>
+
+</p>
+<script>
+    function validateForm() {
+        var x = document.forms["myForm"]["url"].value;
+        var urlregex = new RegExp("^(http|https|ftp)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&amp;%\$\-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\?\'\\\+&amp;%\$#\=~_\-]+))*$");
+        if (x == null || x == "") {
+            alert("URL must be filled out");
+            return false;
+        }
+        else if(!urlregex.test(x))
+        {
+            alert("Enter valid url");
+            return false;
+        }
+        return true;
+    }
+</script>
+<style>
+    .input {
+        border: 1px solid #006;
+        background: #ffc;
+    }
+    .input:hover {
+        border: 1px solid #f00;
+        background: #ff6;
+    }
+    .button {
+        border: none;
+        padding: 2px 8px;
+    }
+    .button:hover {
+        border: none;
+        padding: 2px 8px;
+    }
+    label {
+        display: block;
+        width: 150px;
+        float: left;
+        margin: 2px 4px 6px 4px;
+        text-align: right;
+    }
+    br { clear: left; }
+    body {
+        background-color : #f4a460;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        color : #000000;
+        text-align : center;
+        font-family: "SIMPSON";
+    }
+    form {
+        width: 300px;
+        margin: 0 auto;
+    }
+
+</style>
+</body>
+</html>
