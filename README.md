@@ -6,7 +6,7 @@ A Web Crawler that takes an url and finds individual event urls in the same doma
 Description
 ===========
 
-A RESTful application that takes a url as input (http post) and finds individual event urls in the same domain and returns 10 urls as output.
+A RESTful web application that takes a url as input (also http post) and finds individual event urls in the same domain and returns 10 urls as output.
 
 Logic Used
 ==========
@@ -24,7 +24,7 @@ Logic Used
 
 Technologies Used
 =================
-Java, Servlets, Maven, Tomcat, Jersey - RESTful Web Services in Java
+Java, Servlets, Maven, Tomcat, Jersey - RESTful Web Services in Java, Cloudbees
 
 Links
 =====
